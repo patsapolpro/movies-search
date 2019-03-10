@@ -2,7 +2,9 @@ package com.wongnai.interview.movie;
 
 import java.util.Arrays;
 
+import com.wongnai.interview.movie.sync.MovieDataSynchronizer;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MoviesControllerIntegrationTest {
 	@Autowired
 	private MockMvc mvc;
+
+	@Autowired
+	private MovieDataSynchronizer movieDataSynchronizer;
+
+	@Before
+	public void clearAndSync() {
+		movieDataSynchronizer.forceDelete();
+		movieDataSynchronizer.forceSync();
+	}
 
 	@Test
 	public void testSearchWithRestApi() throws Exception {

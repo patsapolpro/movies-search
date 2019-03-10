@@ -2,8 +2,10 @@ package com.wongnai.interview.movie.search;
 
 import java.util.List;
 
+import com.wongnai.interview.movie.sync.MovieDataSynchronizer;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,15 @@ import com.wongnai.interview.movie.MovieTestHelper;
 public class InvertedIndexMovieSearchServiceIntegrationTest {
 	@Autowired
 	private InvertedIndexMovieSearchService searchService;
+
+	@Autowired
+	private MovieDataSynchronizer movieDataSynchronizer;
+
+	@Before
+	public void clearAndSync() {
+		movieDataSynchronizer.forceDelete();
+		movieDataSynchronizer.forceSync();
+	}
 
 	@Test
 	public void testFindSingleKeywordContainInTitle() {

@@ -24,4 +24,8 @@ public class MovieInvertedIndexRepository {
         }
         return null;
     }
+
+    public void clear() {
+        map = new HashMap<>();
+    }
 }

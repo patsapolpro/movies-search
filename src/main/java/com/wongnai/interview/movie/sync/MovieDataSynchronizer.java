@@ -38,4 +38,10 @@ public class MovieDataSynchronizer {
 			}
 		}
 	}
+
+	@Transactional
+	public void forceDelete() {
+		movieRepository.deleteAll();
+		movieInvertedIndexRepository.clear();
+	}
 }
