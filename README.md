@@ -1,4 +1,4 @@
-Wongnai Backend Assignment
+Backend Assignment
 ===
 
 โจทย์ที่เราจะมาทำกันก็คือ ทำระบบ search ภาพยนตร์ โดยต้องทำเป็น web service และคืนผลลัพธ์เป็น JSON ครับ
